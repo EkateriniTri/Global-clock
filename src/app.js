@@ -17,16 +17,36 @@ function updateTime() {
   seoulDateElement.innerHTML = seoulTime.format("MMMM Do YYYY");
   seoulTimeElement.innerHTML = seoulTime.format("h:mm:ss [<small>]A[</small>]");
 
-  let californiaElement = document.querySelector("#california");
-  let californiaDateElement = californiaElement.querySelector(".date");
-  let californiaTimeElement = californiaElement.querySelector(".time");
-  let californiaTime = moment().tz("US/Pacific");
+  let seattleElement = document.querySelector("#seattle");
+  let seattleDateElement = seattleElement.querySelector(".date");
+  let seattleTimeElement = seattleElement.querySelector(".time");
+  let seattleTime = moment().tz("US/Pacific");
 
-  californiaDateElement.innerHTML = californiaTime.format("MMMM Do YYYY");
-  californiaTimeElement.innerHTML = californiaTime.format(
+  seattleDateElement.innerHTML = seattleTime.format("MMMM Do YYYY");
+  seattleTimeElement.innerHTML = seattleTime.format(
     "h:mm:ss [<small>]A[</small>]"
   );
 }
 
+function updateCity(event) {
+  let cityTimeZone = event.target.value;
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = `
+      <div class="city" id="seattle">
+        <div>
+          <h2>${cityName}</h2>
+          <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+        </div>
+        <div class="time">${cityTime.format(
+          "h:mm:ss"
+        )} <small> ${cityTime.format("A")}</small></div>
+      </div>`;
+}
+
 updateTime();
 setInterval(updateTime, 1000);
+
+let citiesSelectElement = document.querySelector("#city");
+citiesSelectElement.addEventListener("change", updateCity);
