@@ -1,5 +1,5 @@
 body {
-  background-color: #f9f7fe;
+  background-color: #f9f7fe6e;
   font-family: sans-serif;
   background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/103/536/original/pexels-andrey-grushnikov-707676.jpg?1699612213");
 }
@@ -22,7 +22,7 @@ h2 {
   padding: 35px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 7px;
-  transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 .container:hover {
